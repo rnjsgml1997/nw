@@ -12,9 +12,14 @@ s.listen(5)
 while True:
     # 접속요청 승인
     client, address = s.accept() 
+    print "[+] new connection from %s(%s)" % (address[0], address[1])
     while True:
-         # 클라이언트가 전송한 데이터 수신
-        data = client.recv(1024)
+        try:
+            # 클라이언트가 전송한 데이터 수신    
+            data = client.recv(1024)
+        except:
+            print "Exception!!!"
+            break
         if not data:
             # 데이터를 보내지 않은 클라이언트 연결 종료
             client.close()
