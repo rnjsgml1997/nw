@@ -23,7 +23,7 @@ int main(int argc, char* argv[]){
        if(argc != 2){
                 printf("usage: %s number\n", argv[0]);
                 exit(-1);
-                }
+        }
                 result = makeodd(atoi(argv[1]));
                 printf("makeodd :%d\n", result);
 
