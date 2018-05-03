@@ -9,11 +9,17 @@ s = socket.socket()
 s.bind(info)
 # 바인딩 포트 리스닝
 s.listen(5)
-# 접속요청 승인
-client, address = s.accept()
-# 클라이언트가 전송한 데이터 수신
-data = client.recv(1024)
-print "address %s send data: %s" % \
-    ( address[0], data)
-# 수신 데이터를 클라이언트에 전송
-client.send(data)
+while True:
+    # 접속요청 승인
+    client, address = s.accept() 
+    while True:
+         # 클라이언트가 전송한 데이터 수신
+        data = client.recv(1024)
+        if not data:
+            # 데이터를 보내지 않은 클라이언트 연결 종료
+            client.close()
+            break
+        print "address %s send data: %s" % \
+            ( address[0], data)
+        # 수신 데이터를 클라이언트에 전송
+        client.send(data)
