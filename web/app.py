@@ -44,5 +44,3 @@ def add(num1=None, num2=None):
     if num1 is None or num2 is None:
         return "/add/num1/num2"
     return str(num1 + num2)
-
-
